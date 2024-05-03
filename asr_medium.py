@@ -10,8 +10,7 @@ def transcribe_speech(filepath):
 
 if __name__ == "__main__":
     asr = pipeline(task="automatic-speech-recognition",
-               model="./models/openai/whisper-medium",
-               language="chinese")
+               model="./models/openai/whisper-medium", device=0)
     
     demo = gr.Blocks()
     mic_transcribe = gr.Interface(
@@ -37,7 +36,7 @@ if __name__ == "__main__":
             "Transcribe Audio File"],
         )
 
-    demo.launch(ip="0.0.0.0",
+    demo.launch(server_name="0.0.0.0",
                 share=True, 
                 server_port=8888)
     
